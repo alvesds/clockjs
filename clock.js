@@ -126,8 +126,8 @@ class ClockDate {
 
 };
 
-function clock(date) {
-    return new ClockDate(date);
+function clock(time) {
+    return new ClockDate(time);
 };
 
 module.exports = clock;
