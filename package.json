@@ -1,6 +1,6 @@
 {
   "name": "clock-time-handler",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "Clock.js is a library that allows you to convert time strings to different formats.",
   "main": "clock.js",
   "author": "alvesds",
