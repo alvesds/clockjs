@@ -130,4 +130,4 @@ function clock(time) {
     return new ClockDate(time);
 };
 
-module.exports = clock;
+export default clock;
