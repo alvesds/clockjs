@@ -1,0 +1,8 @@
+{
+  "name": "clockjs",
+  "version": "1.0.0",
+  "description": "Clock.js is a library that allows you to convert time strings to different formats.",
+  "main": "index.js",
+  "author": "alvesds",
+  "license": "MIT"
+}
