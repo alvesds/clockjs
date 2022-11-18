@@ -1,16 +1,19 @@
 
 class ClockDate {
 
+    #date
+    #is_invalid
+
     constructor(date) {
-        this.date = date;
-        this.is_invalid = false;
+        this.#date = date;
+        this.#is_invalid = false;
     };
 
     as(format) {
 
-        if (this.is_invalid) return "Invalid Date"
+        if (this.#is_invalid) return "Invalid Date"
 
-        let [time, modifier] = this.date.split(" ");
+        let [time, modifier] = this.#date.split(" ");
         let [as_time, as_modifier] = format.split(" ");
 
         const format_time = () => {
@@ -123,8 +126,8 @@ class ClockDate {
 
 };
 
-function clock(date, pattern) {
-    return new ClockDate(date, pattern);
+function clock(date) {
+    return new ClockDate(date);
 };
 
-module.exports = { clock };
+module.exports = clock;
