@@ -33,8 +33,12 @@ class ClockDate {
 
                 if (as_hours == 'hh') {
 
-                    if (parseInt(hours) > 12) {
-                        new_hours = `${parseInt(hours) - 12}`;
+                    if (parseInt(hours) >= 12) {
+                        if (hours == '12') {
+                            new_hours = "12";
+                        } else {
+                            new_hours = `${parseInt(hours) - 12}`;
+                        }
                         new_modifier = "pm";
                     } else {
                         if (parseInt(hours) == 0) {
