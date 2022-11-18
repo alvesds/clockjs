@@ -1,10 +1,9 @@
 
 class ClockDate {
 
-    constructor(date, pattern) {
+    constructor(date) {
         this.date = date;
         this.is_invalid = false;
-        // regex date throw error
     };
 
     as(format) {
@@ -51,11 +50,11 @@ class ClockDate {
                     }
                 };
 
-                if (as_minutes) {
+                if (as_minutes == 'mm') {
                     new_minutes = minutes || "00";
                 };
 
-                if (as_seconds) {
+                if (as_seconds == 'ss') {
                     new_seconds = seconds || "00";
                 };
 
@@ -67,6 +66,51 @@ class ClockDate {
 
             } else {
                 // date is 12 hours
+
+                let new_hours, new_minutes, new_seconds, new_modifier;
+
+                if (as_hours == 'hh') {
+                    new_hours = hours;
+
+                    if (as_modifier == 'A') {
+                        new_modifier = modifier.toUpperCase();
+                    };
+                    if (as_modifier == 'a') {
+                        new_modifier = modifier.toLowerCase();
+                    }
+                };
+
+                if (as_hours == 'HH') {
+                    if (modifier.toUpperCase() == 'PM') {
+                        if (hours == "12") {
+                            new_hours = "12"
+                        } else {
+                            new_hours = parseInt(hours) + 12;
+                        };
+                    };
+                    if (modifier.toUpperCase() == 'AM') {
+                        if (hours == "12") {
+                            new_hours = "00"
+                        } else {
+                            new_hours = hours
+                        };
+                    };
+                };
+
+                if (as_minutes == 'mm') {
+                    new_minutes = minutes || "00";
+                };
+
+                if (as_seconds == 'ss') {
+                    new_seconds = seconds || "00";
+                };
+
+                return `${[
+                    new_hours,
+                    ...(new_minutes ? [new_minutes] : []),
+                    ...(new_seconds ? [new_seconds] : [])
+                ].join(":")}${new_modifier ? ` ${new_modifier}` : ""}`
+
             }
 
         };
@@ -83,6 +127,4 @@ function clock(date, pattern) {
     return new ClockDate(date, pattern);
 };
 
-let time = clock('18:42').as('HH:mm');
-
-console.log(time)
+module.exports = { clock };
